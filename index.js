@@ -7,9 +7,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: "https://abds059.github.io", 
-    methods: ["GET"],
+  origin: "https://abds059.github.io", //  GitHub Pages URL
+  methods: ["GET"],
+  credentials: false
 }));
+
+
+
 
 app.get("/news", async (req, res) => {
     const { q, topic } = req.query;
@@ -25,21 +29,21 @@ app.get("/news", async (req, res) => {
     if (topic) params.append("topic", topic);
 
     const finalUrl = `${baseUrl}?${params.toString()}`;
-    console.log("➡️ Fetching from:", finalUrl); // 🔍 Debug
+    console.log("Fetching from:", finalUrl); // Debug
 
     try {
         const response = await fetch(finalUrl);
         const data = await response.json();
 
-        console.log("📦 Data received:", data); // 🔍 Debug
+        console.log("Data received:", data); // Debug
 
         res.json(data);
     } catch (error) {
-        console.error("❌ Fetch failed:", error.message);
+        console.error("Fetch failed:", error.message);
         res.status(502).json({ error: "Failed to fetch news", message: error.message });
     }
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
