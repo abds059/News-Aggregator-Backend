@@ -7,12 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-  origin: "https://abds059.github.io", //  GitHub Pages URL
+  origin: "https://abds059.github.io",
   methods: ["GET"],
-  credentials: false
+  optionsSuccessStatus: 200
 }));
-
-
 
 
 app.get("/news", async (req, res) => {
