@@ -6,7 +6,10 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors()); // allow all origins
+app.use(cors({
+    origin: "https://abds059.github.io", 
+    methods: ["GET"],
+}));
 
 app.get("/news", async (req, res) => {
     const { q, topic } = req.query;
