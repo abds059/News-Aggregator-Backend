@@ -1,20 +1,8 @@
+
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/news.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/news",
-      "dest": "/api/news.js"
-    }
-  ],
   "functions": {
     "api/news.js": {
-      "maxDuration": 10
+      "runtime": "nodejs18.x"
     }
   }
 }
